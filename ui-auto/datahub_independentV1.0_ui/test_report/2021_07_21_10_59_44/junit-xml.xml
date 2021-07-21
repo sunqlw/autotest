@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="20.181" timestamp="2021-07-21T10:59:44.531795" hostname="sim-hankdeMacBook-Pro.local"><testcase classname="test_case.test_job_add_case.TestJobAddCase" name="test_add_rds_extract" time="17.603" /></testsuite></testsuites>

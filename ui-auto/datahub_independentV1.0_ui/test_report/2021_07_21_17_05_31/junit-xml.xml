@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="24.004" timestamp="2021-07-21T17:05:31.175754" hostname="sim-hankdeMacBook-Pro.local"><testcase classname="test_case.test_job_add_case.TestJobAddCase" name="test_add_rds_extract" time="20.740"><failure message="AttributeError: 'Element' object has no attribute '_Element'">self = &lt;test_case.test_job_add_case.TestJobAddCase object at 0x7fc8991c9d60&gt;
+
+    def test_add_rds_extract(self):
+        self.page.add_job_button.click()
+        self.page.add_new_canvas_button.click()
+        self.page.job_name_input = '新建空白画布任务'
+        self.page.add_sure_button.click()
+        # 不行，这个获取到的是元素在html里面的坐标，而不是相对于整个浏览器的坐标
+        self.page.drag_and_drop_by_offset_by_pyautogui(self.page.rds_extract_component, 380, 400)
+        self.page.drag_and_drop_by_offset_by_pyautogui(self.page.merge_component, 600, 400)
+        time.sleep(1)
+        # self.page.first_right.click_and_hold_and_move_to_elem(self.page.second_left)  # 模拟两个组件的连线操作
+        # self.page.connect_elem(self.page.first_right, self.page.second_left)
+&gt;       self.page.connect_elem(self.page.switch_elem(self.page.first_right),
+                               self.page.switch_elem(self.page.second_left))
+
+test_case/test_job_add_case.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+elem = &lt;poium.page_objects.Element object at 0x7fc898eb71f0&gt;
+
+    @staticmethod
+    def switch_elem(elem):
+        """
+        将poium里面的Element对象转成selenium里面的WebElement对象
+        :return:
+        """
+&gt;       return elem._Element.__get_element(elem.k, elem.v)
+E       AttributeError: 'Element' object has no attribute '_Element'
+
+page/menu_page.py:28: AttributeError</failure></testcase></testsuite></testsuites>

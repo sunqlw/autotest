@@ -1,0 +1,20 @@
+{
+  "mysql":
+    {
+      "type": "mysql",
+      "host": "172.17.177.22",
+      "port": "3306",
+      "username": "root",
+      "password": "bigData@123",
+      "server_name": ""
+    },
+  "oracle":
+  {
+    "type": "oracle",
+    "host": "172.17.177.22",
+    "port": "1521",
+    "server_name": "ORCLCDB",
+    "username": "c##datahub",
+    "password": "datahub"
+  }
+}

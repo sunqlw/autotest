@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="23.100" timestamp="2021-07-21T15:53:25.258501" hostname="sim-hankdeMacBook-Pro.local"><testcase classname="test_case.test_job_add_case.TestJobAddCase" name="test_add_rds_extract" time="20.373"><failure message="AttributeError: 'Element' object has no attribute 'driver'">self = &lt;test_case.test_job_add_case.TestJobAddCase object at 0x7fb9bd9c1af0&gt;
+
+    def test_add_rds_extract(self):
+        self.page.add_job_button.click()
+        self.page.add_new_canvas_button.click()
+        self.page.job_name_input = '新建空白画布任务'
+        self.page.add_sure_button.click()
+        # 不行，这个获取到的是元素在html里面的坐标，而不是相对于整个浏览器的坐标
+        self.page.drag_and_drop_by_offset_by_pyautogui(self.page.rds_extract_component, 380, 400)
+        self.page.drag_and_drop_by_offset_by_pyautogui(self.page.merge_component, 600, 400)
+        time.sleep(1)
+&gt;       self.page.first_right.click_and_hold_and_move_to_elem(self.page.second_left)  # 模拟两个组件的连线操作
+
+test_case/test_job_add_case.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;poium.page_objects.Element object at 0x7fb9bd6c1550&gt;
+move_elem = &lt;poium.page_objects.Element object at 0x7fb9bd6c1520&gt;
+
+    def click_and_hold_and_move_to_elem(self, move_elem):
+        elem = self.__get_element(self.k, self.v)
+        # ActionChains(Browser.driver).click_and_hold(elem).release(move_elem.__get_element(move_elem.k, move_elem.v)).perform()
+&gt;       ActionChains(self.driver).drag_and_drop(elem, move_elem.__get_element(move_elem.k, move_elem.v)).perform()
+E       AttributeError: 'Element' object has no attribute 'driver'
+
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/poium/page_objects.py:337: AttributeError</failure></testcase></testsuite></testsuites>

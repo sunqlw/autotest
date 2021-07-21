@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="15.333" timestamp="2021-07-21T10:53:23.710552" hostname="sim-hankdeMacBook-Pro.local"><testcase classname="test_case.test_job_add_case.TestJobAddCase" name="test_add_rds_extract" time="12.464"><failure message="TypeError: unsupported operand type(s) for +: 'int' and 'str'">self = &lt;test_case.test_job_add_case.TestJobAddCase object at 0x7fd5780bf2e0&gt;
+
+    def test_add_rds_extract(self):
+        self.page.add_job_button.click()
+        self.page.add_new_canvas_button.click()
+        self.page.job_name_input = '新建空白画布任务'
+        self.page.add_sure_button.click()
+        # 不行，这个获取到的是元素在html里面的坐标，而不是相对于整个浏览器的坐标
+        rds_extract_location = self.page.rds_extract_component.location
+        browser_navigation_panel_height = self.driver.execute_script('return window.outerHeight - window.innerHeight;')
+        y_absolute_coord = rds_extract_location['y'] + browser_navigation_panel_height
+&gt;       logger.info(str(rds_extract_location['x']) + '=====' + str(rds_extract_location['y'] + '++++' + str(y_absolute_coord)))
+E       TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+test_case/test_job_add_case.py:31: TypeError</failure></testcase></testsuite></testsuites>
