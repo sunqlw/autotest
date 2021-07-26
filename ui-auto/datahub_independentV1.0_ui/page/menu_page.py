@@ -37,17 +37,18 @@ class MenuPage(Page):
         通过pyautogui键盘输入的方式控制模拟不同系统的上传文件的方式
         :return:
         """
+        time.sleep(1)
         platform_str = platform.platform().lower()  # 首先获取到操作系统
+        pyperclip.copy(filepath)  # 中文输入法导致不允许直接输入字符串，故采用复制粘贴的形式
         if 'mac' in platform_str:
-            pyautogui.hotkey('shift', 'command', 'g')
-            # 中文输入法下直接输入字符串是不行的，第一个/会变成、，所以通过复制粘贴的形式键入文件名
-            pyperclip.copy(filepath)
+            pyautogui.hotkey('shift', 'command', 'g')  # 打开mac的搜索框，可以直接输入文件全路径定位到具体文件
             pyautogui.hotkey('command', 'v')
             pyautogui.press('enter')
             time.sleep(1)  # 必须停留一下，从粘贴到连续键入两个回车键有问题
             pyautogui.press('enter')
         elif 'windows' in platform_str:
-            pyautogui.typewrite(filepath)
+            pyautogui.hotkey('ctrl', 'v')
+            time.sleep(1)
             pyautogui.press('enter')
         else:
             print('抛出异常，目前只支持mac和Windows的操作系统')

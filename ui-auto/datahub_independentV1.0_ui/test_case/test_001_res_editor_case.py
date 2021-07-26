@@ -95,17 +95,8 @@ class TestResEditorCase:
         core_site_file_path = os.path.join(base_path, 'test_case', 'data', 'core-site.xml')
         hdfs_site_file_path = os.path.join(base_path, 'test_case', 'data', 'hdfs-site.xml')
         self.page.upload_file(core_site_file_path)
-        time.sleep(2)
-        # pyautogui.hotkey('shift', 'command', 'g')
-        # pyautogui.typewrite(kwargs['core-site'])
-        # pyautogui.press('enter')
-        # pyautogui.press('enter')
         self.page.hdfs_site_upload_button.click()
         self.page.upload_file(hdfs_site_file_path)
-        # pyautogui.hotkey('shift', 'command', 'g')
-        # pyautogui.typewrite(kwargs['hdfs-site'])
-        # pyautogui.press('enter')
-        # pyautogui.press('enter')
         self.page.hdfs_username_input = kwargs['username']
         self.__connect_success_and_save()
 
