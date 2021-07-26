@@ -1,5 +1,6 @@
 import os
 import pytest
+import time
 from py.xml import html
 from selenium import webdriver
 from selenium.webdriver import Remote
@@ -97,7 +98,11 @@ def capture_screenshots(case_name):
     global driver
     file_name = case_name.split("/")[-1]
     if RunConfig.NEW_REPORT is None:
-        raise NameError('没有初始化测试报告目录')
+        now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
+        RunConfig.NEW_REPORT = os.path.join(REPORT_DIR, now_time)
+        image_dir = os.path.join(RunConfig.NEW_REPORT, "image", file_name)
+        RunConfig.driver.save_screenshot(image_dir)
+        # raise NameError('没有初始化测试报告目录')
     else:
         image_dir = os.path.join(RunConfig.NEW_REPORT, "image", file_name)
         RunConfig.driver.save_screenshot(image_dir)

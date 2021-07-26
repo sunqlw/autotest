@@ -42,6 +42,5 @@ class ResListPage(MenuPage):
     res_delete_button = Element(xpath='//i[@title="删除"]', describe='资源删除按钮')
     delete_cancel_button = Element(xpath='//div[@class="el-message-box__btns"]/button[1]', describe='删除资源取消按钮')
     delete_sure_button = Element(xpath='//div[@class="el-message-box__btns"]/button[2]', describe='删除资源确认按钮')
-    delete_success_sign = Element(xpath='//p[text()="删除成功"]', describe='删除成功toast')
     res_total_span = Element(class_name='el-pagination__total', describe='总条数标签')
 

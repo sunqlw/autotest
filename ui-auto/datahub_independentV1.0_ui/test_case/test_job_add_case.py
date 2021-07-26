@@ -8,6 +8,7 @@ from selenium import webdriver
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+
 class TestJobAddCase:
     page = JobEditorPage(driver=None)
     res_data_dict = {}
@@ -28,4 +29,5 @@ class TestJobAddCase:
         self.page.drag_and_drop_by_offset_by_pyautogui(self.page.rds_extract_component, 380, 400)
         self.page.drag_and_drop_by_offset_by_pyautogui(self.page.merge_component, 600, 400)
         time.sleep(1)
+        self.page.canvas_rds_extract.double_click()
         self.page.connect_elem(self.page.first_right, self.page.second_left)
