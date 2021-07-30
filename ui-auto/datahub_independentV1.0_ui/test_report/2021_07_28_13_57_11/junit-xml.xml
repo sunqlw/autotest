@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="3" tests="6" time="154.523" timestamp="2021-07-28T13:57:11.357193" hostname="sim-hankdeMacBook-Pro.local"><testcase classname="test_case.test_001_res_editor_case.TestResEditorCase" name="test_add[mysql]" time="45.165"><failure message="selenium.common.exceptions.NoSuchElementException: Message: ❌ Find 0 elements through: class name=el-icon-circle-check">self = &lt;test_case.test_001_res_editor_case.TestResEditorCase object at 0x7fd0249efa90&gt;
+res_type = 'mysql'
+
+    @pytest.mark.parametrize('res_type', res_type_list, ids=res_type_list)
+    def test_add(self, res_type):
+        """
+        用例名称：添加资源
+        步骤：1.填写完相关参数 2.点击测试连接，等待连接通过后点击保存按钮
+        检查点：1.toast提示保存成功 2.表格第一列为新增的资源名
+        """
+        params = self.res_data_dict[res_type]
+        params['res_name'] = res_type + get_now_str()
+        if 'ftp' in res_type:
+            self.add_ftp_common(**params)
+        elif res_type == 's3':
+            self.add_s3_common(**params)
+        elif res_type == 'hdfs':
+            self.add_hdfs_common(**params)
+        elif 'hive' in res_type:
+            self.add_hive_common(**params)
+        elif 'hbase' in res_type:
+            self.add_hbase_common(**params)
+        else:
+&gt;           self.add_rds_common(**params)
+
+test_case/test_001_res_editor_case.py:203: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_case/test_001_res_editor_case.py:24: in wrapper
+    self.connect_success_and_save()
+test_case/test_001_res_editor_case.py:48: in connect_success_and_save
+    self.page.connect_success_sign.is_displayed()
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/poium/page_objects.py:283: in is_displayed
+    elem = self.__get_element(self.k, self.v)
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/poium/page_objects.py:144: in __get_element
+    self.__find_element((By.CLASS_NAME, value))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;poium.page_objects.Element object at 0x7fd023dcba90&gt;
+elem = ('class name', 'el-icon-circle-check')
+
+    def __find_element(self, elem):
+        """
+        Find if the element exists.
+        """
+        for i in range(self.timeout):
+            try:
+                elems = self.__elements(elem[0], elem[1])
+            except FunctionTimedOut:
+                elems = []
+    
+            if len(elems) == 1:
+                logging.info("✅ Find element: {by}={value} ".format(
+                    by=elem[0], value=elem[1]))
+                break
+            elif len(elems) &gt; 1:
+                logging.info("❓ Find {n} elements through: {by}={value}".format(
+                    n=len(elems), by=elem[0], value=elem[1]))
+                break
+            else:
+                sleep(1)
+        else:
+            error_msg = "❌ Find 0 elements through: {by}={value}".format(by=elem[0], value=elem[1])
+            logging.error(error_msg)
+&gt;           raise NoSuchElementException(error_msg)
+E           selenium.common.exceptions.NoSuchElementException: Message: ❌ Find 0 elements through: class name=el-icon-circle-check
+
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/poium/page_objects.py:129: NoSuchElementException</failure></testcase><testcase classname="test_case.test_001_res_editor_case.TestResEditorCase" name="test_add[oracle]" time="19.316" /><testcase classname="test_case.test_001_res_editor_case.TestResEditorCase" name="test_add[sqlserver]" time="18.015" /><testcase classname="test_case.test_001_res_editor_case.TestResEditorCase" name="test_add_res_name_exist" time="0.000"><skipped type="pytest.skip" message="unconditional skip">/Users/sim-hank/Documents/autotest/ui-auto/datahub_independentV1.0_ui/test_case/test_001_res_editor_case.py:206: unconditional skip</skipped></testcase><testcase classname="test_case.test_001_res_editor_case.TestResEditorCase" name="test_add_oracle" time="0.000"><skipped type="pytest.skip" message="unconditional skip">/Users/sim-hank/Documents/autotest/ui-auto/datahub_independentV1.0_ui/test_case/test_001_res_editor_case.py:212: unconditional skip</skipped></testcase><testcase classname="test_case.test_001_res_editor_case.TestResEditorCase" name="test_add_sqlserver" time="1.140"><skipped type="pytest.skip" message="unconditional skip">/Users/sim-hank/Documents/autotest/ui-auto/datahub_independentV1.0_ui/test_case/test_001_res_editor_case.py:226: unconditional skip</skipped></testcase></testsuite></testsuites>

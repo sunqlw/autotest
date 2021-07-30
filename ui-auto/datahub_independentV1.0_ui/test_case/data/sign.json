@@ -1,0 +1,15 @@
+{
+  "mysql": "MySQL",
+  "oracle": "Oracle",
+  "sqlserver": "SQL Server",
+  "db2": "DB2",
+  "postgresql": "PostgreSQL",
+  "hana": "HANA",
+  "tidb": "TiDB",
+  "dm": "达梦",
+  "hive": "Hive",
+  "hdfs": "HDFS",
+  "hbase": "HBase",
+  "ftp": "FTP",
+  "s3": "AWS S3"
+}

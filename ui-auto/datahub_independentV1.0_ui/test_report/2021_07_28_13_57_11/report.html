@@ -429,7 +429,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 22-Jul-2021 at 18:55:08 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 28-Jul-2021 at 13:59:45 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -440,13 +440,13 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>macOS-10.16-x86_64-i386-64bit</td></tr>
       <tr>
         <td>Plugins</td>
-        <td>{"html": "3.1.1", "metadata": "1.11.0", "rerunfailures": "10.1"}</td></tr>
+        <td>{"html": "3.1.1", "metadata": "1.11.0", "ordering": "0.6", "rerunfailures": "10.1"}</td></tr>
       <tr>
         <td>Python</td>
         <td>3.9.6</td></tr></table>
     <h2>Summary</h2>
-    <p>4 tests ran in 71.66 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">4 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <p>3 tests ran in 154.52 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">2 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">3 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="rerun">0 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -457,24 +457,68 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable" col="duration">Duration</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="passed results-table-row">
+      <tbody class="failed results-table-row">
         <tr>
-          <td class="col-result">Passed</td>
+          <td class="col-result">Failed</td>
           <td class="col-name">test_case/test_001_res_editor_case.py::TestResEditorCase::test_add[mysql]</td>
           <td>
             <html>
               <head>
                 <meta name="Content-Type" value="text/html; charset=latin1"/></head>
               <body>
-                <p>        用例名称：添加mysql资源</p>
+                <p>        用例名称：添加资源</p>
+                <p>        步骤：1.填写完相关参数 2.点击测试连接，等待连接通过后点击保存按钮</p>
+                <p>        检查点：1.toast提示保存成功 2.表格第一列为新增的资源名</p>
+                <p>        </p></body></html></td>
+          <td class="col-duration">45.16</td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="image/test_001_res_editor_case.py_TestResEditorCase_test_add[mysql].png" alt="screenshot" style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test_case/test_001_res_editor_case.py::TestResEditorCase::test_add_res_name_exist</td>
+          <td>No test_case description</td>
+          <td class="col-duration">0.00</td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test_case/test_001_res_editor_case.py::TestResEditorCase::test_add_oracle</td>
+          <td>
+            <html>
+              <head>
+                <meta name="Content-Type" value="text/html; charset=latin1"/></head>
+              <body>
+                <p>        用例名称：添加oracle资源</p>
                 <p>        步骤：</p>
-                <p>        1.填写完相关参数</p>
+                <p>        1.资源类型选择oracle，填写完相关参数</p>
                 <p>        2.点击测试连接，等待连接通过后点击保存按钮</p>
                 <p>        检查点：</p>
-                <p>        1.toast提示保存成功</p>
-                <p>        2.表格第一列为新增的资源名</p>
                 <p>        </p></body></html></td>
-          <td class="col-duration">19.33</td></tr>
+          <td class="col-duration">0.00</td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test_case/test_001_res_editor_case.py::TestResEditorCase::test_add_sqlserver</td>
+          <td>
+            <html>
+              <head>
+                <meta name="Content-Type" value="text/html; charset=latin1"/></head>
+              <body>
+                <p>        用例名称：添加sqlserver资源</p>
+                <p>        步骤：</p>
+                <p>        1.资源类型选择sqlserver，填写完相关参数</p>
+                <p>        2.点击测试连接，等待连接通过后点击保存按钮</p>
+                <p>        检查点：</p>
+                <p>        </p></body></html></td>
+          <td class="col-duration">1.14</td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="empty log">No log output captured.</div></td></tr></tbody>
@@ -487,15 +531,11 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
               <head>
                 <meta name="Content-Type" value="text/html; charset=latin1"/></head>
               <body>
-                <p>        用例名称：添加mysql资源</p>
-                <p>        步骤：</p>
-                <p>        1.填写完相关参数</p>
-                <p>        2.点击测试连接，等待连接通过后点击保存按钮</p>
-                <p>        检查点：</p>
-                <p>        1.toast提示保存成功</p>
-                <p>        2.表格第一列为新增的资源名</p>
+                <p>        用例名称：添加资源</p>
+                <p>        步骤：1.填写完相关参数 2.点击测试连接，等待连接通过后点击保存按钮</p>
+                <p>        检查点：1.toast提示保存成功 2.表格第一列为新增的资源名</p>
                 <p>        </p></body></html></td>
-          <td class="col-duration">16.56</td></tr>
+          <td class="col-duration">19.31</td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="empty log">No log output captured.</div></td></tr></tbody>
@@ -508,36 +548,11 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
               <head>
                 <meta name="Content-Type" value="text/html; charset=latin1"/></head>
               <body>
-                <p>        用例名称：添加mysql资源</p>
-                <p>        步骤：</p>
-                <p>        1.填写完相关参数</p>
-                <p>        2.点击测试连接，等待连接通过后点击保存按钮</p>
-                <p>        检查点：</p>
-                <p>        1.toast提示保存成功</p>
-                <p>        2.表格第一列为新增的资源名</p>
+                <p>        用例名称：添加资源</p>
+                <p>        步骤：1.填写完相关参数 2.点击测试连接，等待连接通过后点击保存按钮</p>
+                <p>        检查点：1.toast提示保存成功 2.表格第一列为新增的资源名</p>
                 <p>        </p></body></html></td>
-          <td class="col-duration">15.46</td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test_case/test_001_res_editor_case.py::TestResEditorCase::test_add[db2]</td>
-          <td>
-            <html>
-              <head>
-                <meta name="Content-Type" value="text/html; charset=latin1"/></head>
-              <body>
-                <p>        用例名称：添加mysql资源</p>
-                <p>        步骤：</p>
-                <p>        1.填写完相关参数</p>
-                <p>        2.点击测试连接，等待连接通过后点击保存按钮</p>
-                <p>        检查点：</p>
-                <p>        1.toast提示保存成功</p>
-                <p>        2.表格第一列为新增的资源名</p>
-                <p>        </p></body></html></td>
-          <td class="col-duration">20.27</td></tr>
+          <td class="col-duration">18.01</td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="empty log">No log output captured.</div></td></tr></tbody></table></body></html>

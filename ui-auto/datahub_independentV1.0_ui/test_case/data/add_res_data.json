@@ -82,11 +82,38 @@
     "username": "datahub",
     "password": "datahub"
   },
+  "s3":
+  {
+    "accesskey": "AKIAP4MOVNBFMWGNR4IA",
+    "secretkey": "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",
+    "region": "china"
+  },
   "hdfs":
   {
-    "type": "hdfs",
     "core-site": "core-site.xml",
     "hdfs-site": "hdfs-site.xml",
     "username": "hdfs"
+  },
+  "hive":
+  {
+    "service_model": "普通模式",
+    "host": "demo19.test.com",
+    "port": "10000",
+    "username": "hive"
+  },
+  "hive_ha":
+  {
+    "service_model": "HA模式",
+    "zk_host": "demo19.test.com,demo20.test.com",
+    "port": "2181",
+    "space_name": "hiveserver2",
+    "username": "hive"
+  },
+  "hbase":
+  {
+    "zk_host": "demo19.test.com,demo20.test.com,demo21.test.com",
+    "port": "2181",
+    "znode": "/hbase-unsecure",
+    "username": "hbase"
   }
 }

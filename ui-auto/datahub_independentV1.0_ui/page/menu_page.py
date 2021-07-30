@@ -5,13 +5,21 @@ import platform
 import pyperclip
 from poium import Page, Element
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class MenuPage(Page):
+    res_type_list = ['mysql', 'oracle', 'sqlserver', 'db2', 'postgresql', 'hana', 'tidb', 'dm', 'ftp', 'sftp', 's3',
+                     'hdfs', 'hive', 'hive_ha', 'hbase']
+
     job_manager_button = Element(xpath='//ul[@class="main-nav"]/li[1]/div', describe='任务管理按钮')
     res_manager_button = Element(xpath='//ul[@class="main-nav"]/li[2]/div', describe='资源管理按钮')
     toast_elem = Element(xpath='/html/body/div[last()]/p', describe='toast标签')
+    table_ele = Element(tag='tbody', describe='表格通用对象')
     table_tr1_td1 = Element(xpath='//tbody/tr[1]/td[1]/div', describe='表格第一行第一列')
+    box_text_ele = Element(xpath='//div[@class="el-message-box__message"]/p', describe='弹窗内容')
+    no_data_sign = Element(xpath='//div[@class="empty-content"]/p', describe='暂无数据标识')
 
     # 定义自己的方法，根据pyautogui采用绝对坐标来拖拽元素
     def drag_and_drop_by_offset_by_pyautogui(self, elem, x, y):
@@ -20,6 +28,61 @@ class MenuPage(Page):
         y_absolute_coord = elem_location['y'] + browser_height
         pyautogui.moveTo(x=elem_location['x'], y=y_absolute_coord, duration=1, tween=pyautogui.linear)
         pyautogui.dragTo(x=x, y=y, duration=1, button='left')  # 鼠标拖拽
+
+    # 定位元素
+    def focus(self, elem):
+        self.driver.execute_script("arguments[0].scrollIntoView();", self.switch_elem(elem))
+        # self.driver.execute_script("arguments[0].focus();", self.switch_elem(elem))
+
+    # 刷新页面
+    def refresh_page(self):
+        self.driver.refresh()
+
+    # 等待元素不可见
+    def wait_elem_not_visibility(self, elem, timeout=10):
+        WebDriverWait(self.driver, timeout).until_not(ec.visibility_of(self.switch_elem(elem)), '元素未消失')
+
+    def return_table_line(self, table_ele, line_no):
+        """
+        返回表格某一行的所有内容
+        :param table_ele: 表格对象
+        :param line_no: 行号，从1开始
+        :return: 表格内容的list对象
+        """
+        return self.__return_table_content(table_ele, line_no=line_no)
+
+    def return_table_col(self, table_ele, col_no):
+        """
+        返回表格某一列的所有内容
+        :param table_ele: 表格对象
+        :param col_no: 列号，从1开始
+        :return: 表格内容的list对象
+        """
+        return self.__return_table_content(table_ele, col_no=col_no)
+
+    def __return_table_content(self, table_ele, line_no=None, col_no=None):
+        """
+        返回表格某一行的所有内容或者某一列的所有内容
+        :param line_no: 行号，从1开始，和col_no互斥，二者只能传一个
+        :param col_no: 列号，从1开始
+        :param table_ele: 表格元素
+        :return: 表格内容的list对象
+        """
+        ele = self.switch_elem(table_ele)
+        tr_elems = ele.find_elements_by_tag_name('tr')
+        list_str = []
+        if line_no:
+            line_ele = tr_elems[line_no-1]
+            td_elems = line_ele.find_elements_by_tag_name('td')
+            for x in range(len(td_elems)):
+                list_str.append(td_elems[x].find_element_by_tag_name('div').text)
+        elif col_no:
+            for y in range(len(tr_elems)):
+                td_elems = tr_elems[y].find_elements_by_tag_name('td')
+                list_str.append(td_elems[col_no-1].find_element_by_tag_name('div').text)
+        else:
+            print("抛出异常，参数传递有误")
+        return list_str
 
     def connect_elem(self, source_elem, target_elem):
         """
@@ -59,4 +122,8 @@ class MenuPage(Page):
         将poium里面的Element对象转成selenium里面的WebElement对象
         :return:
         """
-        return elem._Element__get_element(elem.k, elem.v)
+        # 需要增加一个判断，如果elem是selenium的WebElement对象就不转了
+        if isinstance(elem, Element):
+            return elem._Element__get_element(elem.k, elem.v)
+        else:
+            return elem

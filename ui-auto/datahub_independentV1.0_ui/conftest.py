@@ -51,7 +51,8 @@ def pytest_runtest_makereport(item):
         if (report.skipped and xfail) or (report.failed and not xfail):
             case_path = report.nodeid.replace("::", "_") + ".png"
             if "[" in case_path:
-                case_name = case_path.split("-")[0] + "].png"
+                # case_name = case_path.split("-")[0] + "].png"  # 这句话干什么用的？为什么要
+                case_name = case_path
             else:
                 case_name = case_path
             capture_screenshots(case_name)

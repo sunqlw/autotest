@@ -1,9 +1,10 @@
 from poium import Element
 from .extract_component_page import ExtractComponentPage
 from .load_component_page import LoadComponentPage
+from .transform_component_page import TransformComponentPage
 
 
-class JobEditorPage(ExtractComponentPage, LoadComponentPage):
+class JobEditorPage(ExtractComponentPage, LoadComponentPage, TransformComponentPage):
     add_job_button = Element(xpath='//button[@type="button"]', describe='新建任务按钮', index=2)
     add_new_canvas_button = Element(class_name='new-box', describe='新建空白画布按钮')
     job_name_input = Element(xpath='//input[@placeholder="请输入任务名"]', describe='任务名输入框')
